@@ -1,7 +1,27 @@
 # Cheatsheet + Documentación de NODEJS
 
-¿Este es un cheatsheet mas de NodeJS? No. Este cheatshet tambien contiene un wiki con la documentación mas de NodeJS acá:
-[Wiki Documentación Python](https://github.com/fabiansato/nodeJS-cheatsheet/wiki "Documentación de NodeJS")
+¿Este es un cheatsheet mas de NodeJS? No, Este cheatshet tambien contiene un wiki con la documentación mas de NodeJS acá:
+[Wiki Documentación NodeJS](https://github.com/fabiansato/nodeJS-cheatsheet/wiki "Documentación de NodeJS")
+
+
+------------------------------
+
+# 1.  NodeJS
+
+NodeJS, es básicamente un framework para implementar operaciones de entrada y salida, como decíamos anteriormente. Está basado en eventos, streams y construido encima del motor de Javascript V8, que es con el que funciona el Javascript de Google Chrome.
+
+
+# 2. Instalación de NodeJS
+
+
+
+# 3. Características fundamentales de Node.JS 
+
+# 4. Módulos en NodeJS
+
+
+# 5. Eventos en NodeJS
+
 
 ------------------------------
 ## Modulos en NodeJS
