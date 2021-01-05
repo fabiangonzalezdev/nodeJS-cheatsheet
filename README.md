@@ -241,7 +241,30 @@ Para instalar Express temporalmente y no añadirlo a la lista de dependencias, o
 ```node
 $ npm install express
 ```
+## Hello world
 
+agregar un archivo app.js
+
+```node
+const express = require('express')
+const app = express()
+const port = 3000
+
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`)
+})
+```
+
+
+Ejecute la aplicación con el siguiente mandato:
+
+```node
+$ node app.js
+```
 ## Express Generator
 Para instalar esta herramienta debemos ejecutar:
 ```node
