@@ -143,6 +143,35 @@ El parámetro respuesta es el que tenemos que llamar a los métodos:
 ------------------------------
 # 5. Eventos en NodeJS
 ------------------------------
+Los eventos del lado del servidor, no tienen nada que ver con los eventos Javascript que conocemos y utilizamos en las aplicaciones web del lado del cliente
+Los eventos se encuentran en un módulo independiente que tenemos que requerir en nuestros programas creados con Node JS con la sentencia "require" que ya hemos visto.
+```node
+var eventos = require('events');
+```
 
+
+Veamos primero el emisor de eventos, que encuentras en la propiedad EventEmitter.
+```node
+var EmisorEventos = eventos.EventEmitter;
+```
+Primero tendremos que "instanciar" un objeto de la clase EventEmitter, que hemos guardado en la variable EmisorEventos.
+```node
+var ee = new EmisorEventos();
+```
+
+Por ejemplo, voy a emitir un evento llamado "datos", con este código.
+```node
+ee.emit('datos', Date.now());
+```
+
+
+Ahora voy a hacer una función manejadora de eventos que se asocie al evento definido en "datos".
+
+```
+ee.on('datos', function(fecha){
+console.log(fecha);
+
+});
+```
 ------------------------------
 
