@@ -13,7 +13,16 @@ NodeJS, es básicamente un framework para implementar operaciones de entrada y s
 
 # 2. Instalación de NodeJS
 
+Windows:
+Si estás en Windows, al pulsar sobre Install te descargará el instalador para este sistema, un archivo con extensión "msi" que como ya sabes, te mostrará el típico asistente de instalación de software.
 
+Linux
+```terminal
+sudo apt-get install python-software-properties
+sudo add-apt-repository ppa:chris-lea/node.js
+sudo apt-get update
+sudo apt-get install nodejs npm
+```
 
 # 3. Características fundamentales de Node.JS 
 
