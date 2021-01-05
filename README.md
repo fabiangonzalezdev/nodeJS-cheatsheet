@@ -19,7 +19,7 @@ Windows:
 Si estás en Windows, al pulsar sobre Install te descargará el instalador para este sistema, un archivo con extensión "msi" que como ya sabes, te mostrará el típico asistente de instalación de software.
 
 Linux
-```ubuntu
+```linux
 sudo apt-get install python-software-properties
 sudo add-apt-repository ppa:chris-lea/node.js
 sudo apt-get update
