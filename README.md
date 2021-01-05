@@ -175,3 +175,71 @@ console.log(fecha);
 ```
 ------------------------------
 
+
+-------------------------------
+# API Rest
+-------------------------------
+
+•	Protocolo cliente/servidor sin estado: cada petición HTTP contiene toda la información necesaria para ejecutarla,
+Las operaciones más importantes relacionadas con los datos en cualquier sistema REST y la especificación HTTP son cuatro: `POST (crear)`, `GET (leer y consultar)`, `PUT (editar)` y `DELETE (eliminar)`.
+
+•	Los objetos en REST siempre se manipulan a partir de la URI.
+
+•	Interfaz uniforme. 
+
+•	Sistema de capas.
+
+•	Uso de hipermedios
+Ejemplo
+
+Puedes consultar qué modos de envío tiene habilitado el usuario de la siguiente manera:
+```node
+GET https://api.mercarolibre.com/users/:user_id?access_token=
+```
+
+
+respuesta:
+```node
+“shipping_modes”:{
+
+“custom”,
+“not_specified”,
+“me1”,
+“me2”
+} 
+```
+-------------------------------
+# Express
+-------------------------------
+
+Para instalar esta herramienta debemos ejecutar:
+```node
+npm install express-generator -g
+```
+
+visualizar las opciones que nos brinda esta herramienta;
+```node
+express –h 
+```
+##crear nuestra primera aplicación:
+```node
+express --view=ejs myapp
+```
+dentro del directorio donde se creó nuestra app:
+ejecutamos: `npm install`
+ejecutamos (desde windows):
+```node
+set DEBUG=myapp:* & npm start
+```
+o desde LINUX o MAC:
+```node
+DEBUG=myapp:* npm start
+```
+Cada vez que queramos “levantar” nuestro servidor en el puerto 3000 debemos ejecutar este último comando
+Si en la barra de direcciones de nuestro navegador colocamos:
+
+`http://localhost:3000/`
+
+Accederemos al contenido de nuestra aplicación.
+
+
