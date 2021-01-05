@@ -6,13 +6,14 @@
 
 ------------------------------
 
-# 1.  NodeJS
-
+# NodeJS
+------------------------------
 NodeJS, es básicamente un framework para implementar operaciones de entrada y salida, como decíamos anteriormente. Está basado en eventos, streams y construido encima del motor de Javascript V8, que es con el que funciona el Javascript de Google Chrome.
 
 
-# 2. Instalación de NodeJS
-
+------------------------------
+# Instalación de NodeJS
+------------------------------
 ## Bajar siempre la última versión LTS
 
 Windows:
@@ -33,16 +34,13 @@ y
 ```terminal
 brew update
 ```
-# 3. Características fundamentales de Node.JS 
-
-# 4. Módulos en NodeJS
-
-
-# 5. Eventos en NodeJS
-
+------------------------------
+# Características fundamentales de Node.JS
+------------------------------
 
 ------------------------------
-## Modulos en NodeJS
+#  Módulos en NodeJS
+------------------------------
 
 #### Enviar funcion como objeto a otro modulo de nodejs
 Envia el contenido de una funcion como un objeto
@@ -92,14 +90,31 @@ fs.writeFile('./archivo1.txt', 'línea 1\nLínea 2', error => {
 });
 ```
 
-// mas modulos de nodejs
+### mas modulos de nodejs:
 https://nodejs.org/api/fs.html
 
-####  modulo https
+###  modulo https
 ```node
 const http=require('http');
 ```
-####  Levantar un Servidor web con Node.js
+### 
+
+
+Cuando accedemos a un sitio web desde un navegador escribimos entre otras cosas:
+```node
+http://host[:puerto][/ruta y archivo][?parámetros]
+```
+
+•	http (indica el protocolo que utilizamos para conectarnos con un servidor web)
+
+•	host (es el nombre del dominio por ej. google.com.ar)
+
+•	puerto (es un número que generalmente no lo disponemos ya que por defecto el protocolo http utiliza el nro 80, salvo que nuestro servidor escuche peticiones en otro puerto que ya en este caso si debemos indicarlo)
+
+•	[/ruta y archivo] (indica donde se encuentra el archivo en el servidor)
+
+•	?parámetros (datos que se pueden enviar desde el cliente para una mayor identificación del recurso que solicitamos)
+###  Levantar un Servidor web con Node.js
 ```node
 const http=require('http');
 
@@ -115,3 +130,19 @@ servidor.listen(8888);
 console.log('Servidor web iniciado');
 });
 ```
+
+El parámetro respuesta es el que tenemos que llamar a los métodos:
+
+•	`writeHead:` es para indicar la cabecera de la petición HTTP (en esta caso indicamos con el código 200 que la petición fue Ok y con el segundo parámetro inicializamos la propiedad Content-Type indicando que retornaremos una corriente de datos de tipo HTML
+
+•	`write:` mediante la función write indicamos todos los datos propiamente dicho del recurso a devolver al cliente (en este caso indicamos en la cabecera de la petición que se trataba de HTML)
+
+•	`end:` finalmente llamando a la función end finalizamos la corriente de datos del recurso (podemos llamar varias veces a la función write previo a llamar por única vez a end)
+
+
+------------------------------
+# 5. Eventos en NodeJS
+------------------------------
+
+------------------------------
+
