@@ -34,9 +34,7 @@ y
 ```terminal
 brew update
 ```
-------------------------------
-# Características fundamentales de Node.JS
-------------------------------
+
 
 ------------------------------
 #  Módulos en NodeJS
