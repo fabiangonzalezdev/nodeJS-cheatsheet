@@ -211,7 +211,38 @@ respuesta:
 -------------------------------
 # Express
 -------------------------------
+## Instalar Express
+Instalación
+crear directorio:
 
+```node
+$ mkdir myapp
+$ cd myapp
+```
+
+Utilice el mandato npm init
+
+```node
+$ npm init
+```
+Este mandato solicita varios elementos
+
+```node
+entry point: (index.js)
+```
+
+A continuación, instale Express en el directorio myapp y guárdelo en la lista de dependencias. Por ejemplo:
+
+```node
+$ npm install express --save
+```
+Para instalar Express temporalmente y no añadirlo a la lista de dependencias, omita la opción --save:
+
+```node
+$ npm install express
+```
+
+## Express Generator
 Para instalar esta herramienta debemos ejecutar:
 ```node
 npm install express-generator -g
