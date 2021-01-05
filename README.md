@@ -211,6 +211,8 @@ respuesta:
 -------------------------------
 # Express
 -------------------------------
+<img src="https://fabiansato.github.io/logos/nodeexpress.png">
+
 ## Instalar Express
 Instalación
 crear directorio:
