@@ -241,6 +241,36 @@ Para instalar Express temporalmente y no añadirlo a la lista de dependencias, o
 ```node
 $ npm install express
 ```
+
+----------------------------------------
+# Instalar un proyecto rapido
+----------------------------------------
+para instalar un rpoyecto completo ponemos
+
+```node
+express --view=ejs nombredelproyecto
+```
+
+luego el mismo proyecto nos va a decir que hagamos
+```node
+   change directory:
+     $ cd nombredelproyecto
+
+   install dependencies:
+     $ npm install
+
+   run the app:
+     $ DEBUG=nombredelproyecto:* npm start
+```
+
+listo!! podremos entrar en nuestro navegador en https://localhost:3000
+listooo
+
+(opcional es mejor hacer un `npm install nodemon -g ` y ejecutamos `nodemon npm start` y es mejor porque se refresca automaticamente!!
+
+## IMPORTANTE 
+si se comparte un proyecto no compartir la carpeta "node_modules" la misma se crea simplemente haciendo un `npm install` en la terminal
+
 ## Hello world
 
 agregar un archivo app.js
