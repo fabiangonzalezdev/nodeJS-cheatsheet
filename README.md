@@ -222,6 +222,7 @@ $ cd myapp
 
 Utilice el mandato npm init
 
+⚠️Importante para inicializar cualquier proyecto
 ```node
 $ npm init
 ```
@@ -266,7 +267,7 @@ luego el mismo proyecto nos va a decir que hagamos
 listo!! podremos entrar en nuestro navegador en https://localhost:3000
 listooo
 
-(opcional es mejor hacer un `npm install nodemon -g ` y ejecutamos `nodemon npm start` y es mejor porque se refresca automaticamente!!
+⚠️(opcional es mejor hacer un `npm install nodemon -g ` y ejecutamos `nodemon npm start` y es mejor porque se refresca automaticamente!!
 
 ## IMPORTANTE 
 si se comparte un proyecto no compartir la carpeta "node_modules" la misma se crea simplemente haciendo un `npm install` en la terminal
