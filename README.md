@@ -428,3 +428,266 @@ app.get(/.*fly$/, function(req, res) {
 });
 
 ```
+
+
+
+---------------------------------------------
+## Express – Funciones de llamadas
+---------------------------------------------
+
+Una función de devolución de llamada individual puede manejar una ruta. Por ejemplo:
+
+
+```node
+app.get('/example/a', function (req, res) {
+  res.send('Hello from A!');
+});
+
+```
+Más de una función de devolución de llamada puede manejar una ruta (asegúrese de especificar el objeto next). Por ejemplo:
+
+
+```node
+app.get('/example/b', function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from B!');
+});
+
+```
+Una matriz de funciones de devolución de llamada puede manejar una ruta. Por ejemplo:
+
+
+```node
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+var cb2 = function (req, res) {
+  res.send('Hello from C!');
+}
+
+app.get('/example/c', [cb0, cb1, cb2]);
+
+```
+Una combinación de funciones< independientes y matrices de funciones puede manejar una ruta. Por ejemplo:
+
+
+```node
+var cb0 = function (req, res, next) {
+  console.log('CB0');
+  next();
+}
+
+var cb1 = function (req, res, next) {
+  console.log('CB1');
+  next();
+}
+
+app.get('/example/d', [cb0, cb1], function (req, res, next) {
+  console.log('the response will be sent by the next function ...');
+  next();
+}, function (req, res) {
+  res.send('Hello from D!');
+});
+
+```
+## Métodos de respuesta
+
+Los métodos en el objeto de respuesta (res) de la tabla siguiente pueden enviar una respuesta al cliente y terminar el ciclo de solicitud/respuestas. Si ninguno de estos métodos se invoca desde un manejador de rutas, la solicitud de cliente se dejará colgada.
+Método | Descripción
+------- | ------
+res.download() | Solicita un archivo para descargarlo.
+res.end() | Finaliza el proceso de respuesta.
+res.json() | Envía una respuesta JSON.
+res.jsonp() | Envía una respuesta JSON con soporte JSONP.
+res.redirect() | Redirecciona una solicitud.
+res.render() | Representa una plantilla de vista.
+res.send() | Envía una respuesta de varios tipos.
+res.sendFile() | Envía un archivo como una secuencia de octetos.
+res.sendStatus() | Establece el código de estado de la respuesta y envía su representación de serie como el cuerpo de respuesta.
+
+
+---------------------------------------------
+## Express – Router
+---------------------------------------------
+
+## app.route()
+
+Puede crear manejadores de rutas encadenables para una vía de acceso de ruta utilizando app.route(). Como la vía de acceso se especifica en una única ubicación, la creación de rutas modulares es muy útil, al igual que la reducción de redundancia y errores tipográficos. Para obtener más información sobre las rutas, consulte: Documentación de Router().
+
+A continuación, se muestra un ejemplo de manejadores de rutas encadenados que se definen utilizando app.route().
+
+```node
+app.route('/book')
+  .get(function(req, res) {
+    res.send('Get a random book');
+  })
+  .post(function(req, res) {
+    res.send('Add a book');
+  })
+  .put(function(req, res) {
+    res.send('Update the book');
+  });
+```
+
+
+## express.Router
+
+Utilice la clase express.Router para crear manejadores de rutas montables y modulares. Una instancia Router es un sistema de middleware y direccionamiento completo; por este motivo, a menudo se conoce como una “miniaplicación”.
+
+El siguiente ejemplo crea un direccionador como un módulo, carga una función de middleware en él, define algunas rutas y monta el módulo de direccionador en una vía de acceso en la aplicación principal.
+
+Cree un archivo de direccionador denominado birds.js en el directorio de la aplicación, con el siguiente contenido:
+
+```node
+
+var express = require('express');
+var router = express.Router();
+
+// middleware that is specific to this router
+router.use(function timeLog(req, res, next) {
+  console.log('Time: ', Date.now());
+  next();
+});
+// define the home page route
+router.get('/', function(req, res) {
+  res.send('Birds home page');
+});
+// define the about route
+router.get('/about', function(req, res) {
+  res.send('About birds');
+});
+
+module.exports = router;
+```
+
+A continuación, cargue el módulo de direccionador en la aplicación:
+
+```node
+var birds = require('./birds');
+...
+app.use('/birds', birds);
+```
+La aplicación ahora podrá manejar solicitudes a /birds y /birds/about, así como invocar la función de middleware timeLog que es específica de la ruta.
+
+
+
+
+---------------------------------------------
+## Express – Crear una nueva ruta
+---------------------------------------------
+Debemos crear el archivo correspondiente en la carpeta routes
+ejemplo:
+```productos.js``` en ```routes```
+
+Debemos incluir el modulo “Express” utilizando require y acceder al método router.
+```node
+ var express = require('express');
+ var router = express.Router();
+
+/* GET home page */
+router.get('/:id([0-9]+)', function(req, res,next) {
+ console.log(req.query.nombre);
+ console.log(req.params.id);
+ res.render('catalogo', { title: 'productos'};
+});
+
+module.export = router
+```
+
+Con el método router podemos acceder a métodos según los verbos del protocolo http
+
+```
+•	Router.get
+•	Router.post
+•	Router.put
+•	Router.delete```
+
+## Ruteo
+El primer parámetro de los métodos en la URL con la cual se realizara el match. El match lo realiza en base al use de app.js.
+Ejemplo App.js
+```node
+app.use('/productos', productosRouter);
+```
+
+Productos.js (dentro de directorio router)
+```node
+router.get('/',
+```
+
+Va a realizar el match con la url **/productos/**.
+
+/productos lo toma del app.js
+
+/ lo toma del archivo productos.js
+
+Si en el archivo productos.js ahora sumamos
+```node
+router.get('/destacados',
+```
+En este último caso el match será con **/productos/destacados**
+
+/productos -> app.js
+
+/destacados -> productos.js
+
+## Parámetros por URL
+En la declaración de las rutas, podemos indicar la recepción de un parámetro por URL
+```node
+router.get('/:id([0-9]+)', function(req, res, next){
+```
+
+En este caso el dato enviado en la Url se asignara a la variable id.
+
+También se especifica que la misma debe ser solo numérica (expresión regular) Ejemplo si navegamos la siguiente URL
+```node
+localhost:3000/productos/1
+```
+
+Podemos ver la consola y que muestra
+
+Del lado del router tenemos el siguiente código
+```node
+router.get('/:id([0-9]+)', function(req, res, next){
+ console.log(req.params.id);
+ res.reder('catalogo', { title: 'productos', subtitl
+});
+```
+Como vemos el objeto req.params tiene la información de las variables mapeadas desde la URL. En este ejemplo id
+
+Si recibimos parámetros por query string
+```
+localhost:3000/productos/1?nombre=fabian
+```
+
+Lo recibimos de la siguiente manera
+```node
+router.get('/:id([0-9]+), function(req, res, next){
+  console.log(req.query.nombre);
+  res.render('catalogo', { title: 'productos'. subtitle:'
+});
+```
+
+El objeto query tiene la información enviada por query string en la URL
+
+En el caso de recibir datos en el body (ejemplo peticiones por POST) los mismos se reciben en req.body
+```node
+router.post('/', function(req,res,next){
+ let producto = new productosModel({
+ name: req.body.name,
+ description: req.body.description,
+ sku: req.body.sku,
+ price: req.body.quantity,
+ category: req.body.category
+})
+let data = await producto.save();
+res.status(201).json({ "status": "ok", "data": "data"});
+```
