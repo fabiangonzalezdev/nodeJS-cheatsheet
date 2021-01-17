@@ -354,3 +354,24 @@ app.js --- archivo principal con el primer nivel de ruteo
 ## IMPORTANTE 
 si se comparte un proyecto no compartir la carpeta "node_modules" la misma se crea simplemente haciendo un `npm install` en la terminal
 
+---------------------------------------------
+## Express – Direccionamiento
+---------------------------------------------
+
+El direccionamiento hace referencia a la determinación de cómo responde una aplicación a una solicitud de cliente en un determinado punto final, que es un URI (o una vía de acceso) y un método de solicitud HTTP específico (GET, POST, etc.).
+
+La definición de ruta tiene la siguiente estructura:
+
+```node
+app.METHOD(PATH, HANDLER)
+```
+Donde:
+
+    app es una instancia de express.
+    METHOD es un método de solicitud HTTP.
+    PATH es una vía de acceso en el servidor.
+    HANDLER es la función que se ejecuta cuando se correlaciona la ruta.
+
+Por ejemplo en el directorio route encontramos el archivo index.js, el mismo tendrá la definición de nuestra ruta por default (es decir cuando accedemos a la home de nuestro sitio “/”)
+
+
