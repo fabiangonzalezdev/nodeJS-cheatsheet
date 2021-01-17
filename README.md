@@ -327,4 +327,30 @@ Si en la barra de direcciones de nuestro navegador colocamos:
 
 Accederemos al contenido de nuestra aplicación.
 
+---------------------------------------------
+## Express - extructura de directorios
+---------------------------------------------
+
+Al crear nuestra aplicación en node visualizaremos la siguiente estructura de directorio:
+
+•	**bin**: Directorio propio de express, en el cual podremos visualizar la creación de un servidor en node js
+
+•	**node_modules**: Carpeta propia de node, allí se alojaran todos los modulos instalados con npm install
+
+•	**public**: Se aloja el contenido publico
+
+       o	**Imágenes**
+
+       o	**Javascript**
+
+       o	**CSS**
+
+•	**routes**: Se alojan los archivos que oficiaran de “ruteadores”, es decir que serán visualizados de acuerdo a la URL que accedamos
+
+•	**views**: Se alojan las vistas de nuestra aplicación. En este caso son de tipo ejs. 
+
+app.js --- archivo principal con el primer nivel de ruteo 
+
+## IMPORTANTE 
+si se comparte un proyecto no compartir la carpeta "node_modules" la misma se crea simplemente haciendo un `npm install` en la terminal
 
