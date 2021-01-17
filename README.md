@@ -375,3 +375,39 @@ Donde:
 Por ejemplo en el directorio route encontramos el archivo index.js, el mismo tendrá la definición de nuestra ruta por default (es decir cuando accedemos a la home de nuestro sitio “/”)
 
 
+--------------------
+## Vías de acceso de rutas con expresiones regulares
+--------------------
+
+Estos son algunos ejemplos de vías de acceso de ruta basadas en patrones de serie.
+
+Esta vía de acceso de ruta coincidirá con acd y abcd.
+
+```node
+app.get('/ab?cd', function(req, res) {
+  res.send('ab?cd');
+});
+```
+Esta vía de acceso de ruta coincidirá con abcd, abbcd, abbbcd, etc.
+
+```node
+app.get('/ab+cd', function(req, res) {
+  res.send('ab+cd');
+});
+```
+Esta vía de acceso de ruta coincidirá con abcd, abxcd, abRABDOMcd, ab123cd, etc.
+
+```node
+app.get('/ab*cd', function(req, res) {
+  res.send('ab*cd');
+});
+```
+Esta vía de acceso de ruta coincidirá con /abe y /abcde.
+
+```node
+app.get('/ab(cd)?e', function(req, res) {
+ res.send('ab(cd)?e');
+});
+```
+Los caracteres ?, +, * y () son subconjuntos de sus contrapartidas de expresiones regulares. El guión (-) y el punto (.) se interpretan literalmente en las vías de acceso basadas en series.
+
