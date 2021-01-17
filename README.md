@@ -411,3 +411,20 @@ app.get('/ab(cd)?e', function(req, res) {
 ```
 Los caracteres ?, +, * y () son subconjuntos de sus contrapartidas de expresiones regulares. El guión (-) y el punto (.) se interpretan literalmente en las vías de acceso basadas en series.
 
+
+
+```node
+app.get(/a/, function(req, res) {
+  res.send('/a/');
+});
+
+```
+Esta vía de acceso de ruta coincidirá con butterfly y dragonfly, pero no con butterflyman, dragonfly man, etc.
+
+
+```node
+app.get(/.*fly$/, function(req, res) {
+  res.send('/.*fly$/');
+});
+
+```
