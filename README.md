@@ -605,11 +605,14 @@ module.export = router
 
 Con el método router podemos acceder a métodos según los verbos del protocolo http
 
-```
+
 •	Router.get
+
 •	Router.post
+
 •	Router.put
-•	Router.delete```
+
+•	Router.delete
 
 ## Ruteo
 El primer parámetro de los métodos en la URL con la cual se realizara el match. El match lo realiza en base al use de app.js.
@@ -690,4 +693,5 @@ router.post('/', function(req,res,next){
 })
 let data = await producto.save();
 res.status(201).json({ "status": "ok", "data": "data"});
+```
 ```
