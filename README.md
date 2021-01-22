@@ -246,7 +246,42 @@ $ npm install express
 ----------------------------------------
 # Instalar un proyecto rapido
 ----------------------------------------
-para instalar un rpoyecto completo ponemos
+## para instalar un proyecto limpio ponemos:
+`npm init`
+`npm install --save express`
+abrir `package.json`
+agregar `"main": "nombredelindex.js",`
+agregar `"start": "node nombredelindex"`
+en primer programa agregamos:
+
+```node
+// npm start y listo
+// correr el programa en localhost:3000
+var express = require('express'); 
+var app = express();
+
+const path = require("path");
+const http = require("http");
+
+console.log('Ejemplo de app corriendo en el servidor 3000!');
+
+//Se crea el servidor http con el cual podras hacer POST y GET
+http.createServer(function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    res.write('Hola este es el primer programa de Nodejs Para utn!');
+    res.end();
+    
+}).listen(3000);
+
+//Aquí en medio puede ir tu código.
+
+app.use(express.static(path.join(__dirname, '/')));
+npm start
+
+```
+
+
+PERO!! para instalar un rpoyecto completo ponemos
 
 ```node
 express --view=ejs nombredelproyecto
