@@ -728,5 +728,23 @@ router.post('/', function(req,res,next){
 })
 let data = await producto.save();
 res.status(201).json({ "status": "ok", "data": "data"});
+
 ```
-```
+
+------------------------------
+# MongoDB
+------------------------------
+Es una base de datos noSQL con colecciones de documentos 
+si quiero crear una colección
+create y nombre de la colección
+podemos, insertar, quitar, actualizar, cualquier objeto.
+Si podemos edit sobre un documento podemos editar el documento.
+OJO si usamos UPDATE, los documentos se PISAN por completo salvo que nosotros identifiquemos que no lo haga.
+ejemplo
+```mongodb
+//options
+{
+ "multi" : false, // si esta en true modifica todos los contenidos con la misma data
+ "upsert": false. // si el objeto existe lo actualiza, si no existe lo crea
+ }
+ ```
