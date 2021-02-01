@@ -741,10 +741,63 @@ podemos, insertar, quitar, actualizar, cualquier objeto.
 Si podemos edit sobre un documento podemos editar el documento.
 OJO si usamos UPDATE, los documentos se PISAN por completo salvo que nosotros identifiquemos que no lo haga.
 ejemplo
-```mongodb
+```json
 //options
 {
  "multi" : false, // si esta en true modifica todos los contenidos con la misma data
  "upsert": false. // si el objeto existe lo actualiza, si no existe lo crea
  }
  ```
+ 
+ ## Mongoose
+ ----------------------
+ para instalarlo a nuestro proyecto
+ `npm install mongoose`
+ hacemos un archivo de conexión contra esa base de datos de mongoose
+  ```nodejs
+ var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/pwa2020', { useNewUrlParser: true }, function (error) {
+    if (error) {
+        throw error;
+    } else {
+        console.log('Conectado a MongoDB');
+    }
+});
+module.exports = mongoose; 
+  ```
+  Podemos crear productos que se conecten con la base de datos de mongoose ejemplo:
+
+  ```nodejs
+const mongoose = require("../bin/mongodb")
+
+const productSchema = new mongoose.Schema({
+    name:{
+        type:String,
+        required:[true,"El campo nombre es obligatorio"],
+        minlength:1,
+        maxlength:10
+    },
+    sku:{
+        type:String,
+        unique:true
+    },
+    description:String,
+    price:{
+        type:Number,
+        get:function(price){
+            return price*1.21
+        }
+    },
+    status:{
+        type:String,
+        enum:["aprobado","inactivo"]
+    }
+})
+productSchema.virtual("price_currency").get(function(){
+    return "$ "+this.price
+})
+productSchema.set("toJSON",{getters:true,virtuals:true})
+module.exports=mongoose.model("products",productSchema)
+  
+   ```
+ 
